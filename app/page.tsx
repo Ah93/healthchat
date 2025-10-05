@@ -169,9 +169,60 @@ export default function Home() {
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center">
             <h2 className="text-2xl font-medium text-black mb-3">Welcome to HealthChat</h2>
-            <p className="text-gray-600 max-w-md">
+            <p className="text-gray-600 max-w-md mb-8">
               Your intelligent health assistant powered by WHO guidelines. Ask questions about health monitoring policies, essential medicines, and regulatory frameworks.
             </p>
+            
+            {/* Suggestion Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl w-full">
+              <div 
+                className="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors text-left"
+                onClick={() => setQuestion("What are the WHO guidelines for essential medicines?")}
+              >
+                <h3 className="font-medium text-black mb-2">Essential Medicines</h3>
+                <p className="text-sm text-gray-600">Learn about WHO's list of essential medicines and their guidelines</p>
+              </div>
+              
+              <div 
+                className="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors text-left"
+                onClick={() => setQuestion("What are the health monitoring policies recommended by WHO?")}
+              >
+                <h3 className="font-medium text-black mb-2">Health Monitoring</h3>
+                <p className="text-sm text-gray-600">Explore WHO's health monitoring and surveillance policies</p>
+              </div>
+              
+              <div 
+                className="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors text-left"
+                onClick={() => setQuestion("What are the data regulation requirements for health data?")}
+              >
+                <h3 className="font-medium text-black mb-2">Data Regulations</h3>
+                <p className="text-sm text-gray-600">Understand health data protection and regulatory requirements</p>
+              </div>
+              
+              <div 
+                className="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors text-left"
+                onClick={() => setQuestion("What medicines are recommended for children?")}
+              >
+                <h3 className="font-medium text-black mb-2">Pediatric Medicines</h3>
+                <p className="text-sm text-gray-600">Find information about essential medicines for children</p>
+              </div>
+              
+              <div 
+                className="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors text-left"
+                onClick={() => setQuestion("What are the WHO statistics and health indicators?")}
+              >
+                <h3 className="font-medium text-black mb-2">Health Statistics</h3>
+                <p className="text-sm text-gray-600">Access WHO health statistics and global health indicators</p>
+              </div>
+              
+              <div 
+                className="bg-gray-50 border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors text-left"
+                onClick={() => setQuestion("What mental health guidelines does WHO recommend?")}
+              >
+                <h3 className="font-medium text-black mb-2">Mental Health</h3>
+                <p className="text-sm text-gray-600">Learn about WHO's mental health policies and guidelines</p>
+              </div>
+            </div>
           </div>
         )}
         
