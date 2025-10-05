@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "app/api/**/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "build": {
+    "env": {
+      "DEEPSEEK_API_KEY": "@deepseek-api-key",
+      "PINECONE_API_KEY": "@pinecone-api-key",
+      "PINECONE_INDEX": "@pinecone-index"
+    }
+  }
+}
