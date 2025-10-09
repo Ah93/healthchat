@@ -6,14 +6,36 @@ import { askLLM } from "../../../lib/llm";
 export async function POST(request) {
   try {
     console.log("Chat API called");
+    console.log("Environment check:", {
+      hasPineconeKey: !!process.env.PINECONE_API_KEY,
+      hasPineconeIndex: !!process.env.PINECONE_INDEX,
+      hasDeepSeekKey: !!process.env.DEEPSEEK_API_KEY,
+      hasDeepSeekBaseURL: !!process.env.DEEPSEEK_BASE_URL,
+      deepSeekBaseURL: process.env.DEEPSEEK_BASE_URL,
+      pineconeIndex: process.env.PINECONE_INDEX
+    });
     
     if (!process.env.PINECONE_API_KEY || !process.env.PINECONE_INDEX) {
       console.log("Pinecone not configured");
-      return Response.json({ error: "Vector store not configured" }, { status: 500 });
+      return Response.json({ 
+        error: "Vector store not configured", 
+        debug: {
+          hasPineconeKey: !!process.env.PINECONE_API_KEY,
+          hasPineconeIndex: !!process.env.PINECONE_INDEX,
+          pineconeIndex: process.env.PINECONE_INDEX
+        }
+      }, { status: 500 });
     }
     if (!process.env.DEEPSEEK_API_KEY || !process.env.DEEPSEEK_BASE_URL) {
       console.log("DeepSeek LLM not configured");
-      return Response.json({ error: "DeepSeek LLM not configured. Please set DEEPSEEK_API_KEY and DEEPSEEK_BASE_URL in .env" }, { status: 500 });
+      return Response.json({ 
+        error: "DeepSeek LLM not configured. Please set DEEPSEEK_API_KEY and DEEPSEEK_BASE_URL in .env",
+        debug: {
+          hasDeepSeekKey: !!process.env.DEEPSEEK_API_KEY,
+          hasDeepSeekBaseURL: !!process.env.DEEPSEEK_BASE_URL,
+          deepSeekBaseURL: process.env.DEEPSEEK_BASE_URL
+        }
+      }, { status: 500 });
     }
 
     const { question } = await request.json();
