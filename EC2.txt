@@ -1,0 +1,19 @@
+http://35.178.131.82:3000
+
+
+git clone https://github.com/Ah93/healthchat.git
+
+pm2 status           # Check if running
+pm2 logs healthchat  # See what's happening
+pm2 restart healthchat  # Restart (after code changes)
+pm2 stop healthchat  # Stop manually
+pm2 delete healthchat  # Remove from PM2
+pm2 status
+
+PINECONE_API_KEY=pcsk_768Dyi_HVHpFQoXqJiyrCbbJQBUyd542sNyp7rQ2EcWHnGxhgr833sHdBhwxZhqZSSKoBq
+PINECONE_ENVIRONMENT=us-east-1
+PINECONE_INDEX=healthinfo
+PINECONE_HOST=https://healthinfo-s0ovwtn.svc.aped-4627-b74a.pinecone.io
+DEEPSEEK_API_KEY=sk-0cd48ac1e8f6401ab74c869d7003a958
+DEEPSEEK_BASE_URL=https://api.deepseek.com/v1
+NODE_ENV=production
