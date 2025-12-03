@@ -1,27 +1,38 @@
-# Base image
-FROM node:18-alpine AS builder
+# -------------------------
+# Install dependencies
+# -------------------------
+FROM node:20-bullseye AS deps
 
 WORKDIR /app
 
-# Install dependencies
-COPY package.json package-lock.json ./
-RUN npm install
+COPY package.json package-lock.json* ./
 
-# Copy project files
+RUN npm ci
+
+
+# -------------------------
+# Build the Next.js app
+# -------------------------
+FROM node:20-bullseye AS builder
+
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Build Next.js app
 RUN npm run build
 
-# Production image
-FROM node:18-alpine AS runner
 
+# -------------------------
+# Production image
+# -------------------------
+FROM node:20-bullseye AS runner
 WORKDIR /app
+
 ENV NODE_ENV=production
 
-# Copy built output and dependencies
 COPY --from=builder /app ./
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["npm", "start"]
