@@ -5,7 +5,7 @@ import { chunkText, generateEmbedding } from "../../../lib/embedding";
 import { getPineconeClient } from "../../../lib/pinecone";
 import * as pdfjsLib from "pdfjs-dist/build/pdf.js";
 import { createRequire } from "module";
-
+export const runtime = 'edge';
 export async function GET(request) {
   try {
     const url = new URL(request.url);

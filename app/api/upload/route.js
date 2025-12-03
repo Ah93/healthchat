@@ -7,7 +7,7 @@ import { createRequire } from "module";
 import mammoth from "mammoth";
 import { generateEmbedding, chunkText } from "../../../lib/embedding";
 import { getPineconeClient } from "../../../lib/pinecone";
-
+export const runtime = 'edge';
 export async function POST(request) {
   // Ensure Node runtime and configure pdf.js worker for server environment
   const require = createRequire(import.meta.url);
