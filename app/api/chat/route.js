@@ -2,7 +2,6 @@
 import { getPineconeClient } from "../../../lib/pinecone";
 import { generateEmbedding } from "../../../lib/embedding";
 import { askLLM } from "../../../lib/llm";
-export const runtime = 'edge';
 export async function POST(request) {
   try {
     console.log("Chat API called");

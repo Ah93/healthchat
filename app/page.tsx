@@ -2,8 +2,6 @@
 // Professional Health Chat Interface
 import { useEffect, useState, useRef } from "react";
 
-export const runtime = "edge";
-
 export default function Home() {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<Array<{

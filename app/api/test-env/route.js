@@ -1,5 +1,4 @@
 // Test endpoint to check environment variables
-export const runtime = 'edge';
 export async function GET() {
   try {
     const envCheck = {
